@@ -63,7 +63,7 @@ export async function resolveBankAccount(
 ): Promise<ResolvedAccount> {
   const url = `${FLW_API}/banks/${bankCode}?account_number=${accountNumber}`;
   const res = await fetch(url, { headers: headers() });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Failed to resolve bank account");
@@ -72,7 +72,7 @@ export async function resolveBankAccount(
   return {
     account_number: body.data.account_number,
     account_name: body.data.account_name,
-    bank_code,
+    bank_code: bankCode,
   };
 }
 
@@ -99,7 +99,7 @@ export async function createBeneficiary(params: {
       name: params.account_name,
     }),
   });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Failed to create beneficiary");
@@ -154,7 +154,7 @@ export async function initiateTransfer(params: {
     headers: headers(),
     body: JSON.stringify(payload),
   });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Transfer failed");
@@ -181,7 +181,7 @@ export async function verifyTransfer(reference: string): Promise<{
   const res = await fetch(`${FLW_API}/transfers/${reference}`, {
     headers: headers(),
   });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Transfer verification failed");
@@ -199,7 +199,7 @@ export async function verifyTransfer(reference: string): Promise<{
 
 export async function getBalance(): Promise<{ balance: number; currency: string }> {
   const res = await fetch(`${FLW_API}/balances`, { headers: headers() });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Failed to get balance");
@@ -217,7 +217,7 @@ export async function getBalance(): Promise<{ balance: number; currency: string 
 
 export async function listBanks(): Promise<Array<{ name: string; code: string }>> {
   const res = await fetch(`${FLW_API}/banks/NG`, { headers: headers() });
-  const body = await res.json();
+  const body: any = await res.json();
 
   if (body.status !== "success") {
     throw new Error(body.message || "Failed to list banks");
