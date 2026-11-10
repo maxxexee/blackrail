@@ -111,7 +111,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
     devDependencies:
       prettier:
         specifier: ^3.9.6
@@ -331,7 +330,6 @@ packages:
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
-
 
   '@rolldown/binding-android-arm-eabi@1.2.5':
     resolution: {integrity: sha512-DLe/i+l8ynIBY7XEQ191TeZvCoowIGa18R+dIV30GW7DiOtp74i/xX8hs8GUjW5ARV7VZuie3d6AumSmCwbeRA==}
@@ -2109,7 +2107,6 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       react-promise-suspense: 0.3.4
-
 
   '@rolldown/binding-android-arm-eabi@1.2.5':
     optional: true
